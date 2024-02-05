@@ -10,3 +10,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Category{
+  id Int @unique @id @default(autoincrement())
+  name String
+  products Product?
+}
+
+model Product {
+  id Int @id @unique @default(autoincrement())
+  title String
+  price Float 
+  description String?
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId Int @unique
+  image String
+  createdAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
