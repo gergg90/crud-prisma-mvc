@@ -13,7 +13,7 @@ datasource db {
 model Category{
   id Int @unique @id @default(autoincrement())
   name String
-  products Product?
+  products Product[]
 }
 
 model Product {
@@ -23,7 +23,7 @@ model Product {
   description String?
   category Category @relation(fields: [categoryId], references: [id])
   categoryId Int @unique
-  image String
+  images String
   createdAt DateTime @default(now())
   updateAt DateTime @updatedAt
 }

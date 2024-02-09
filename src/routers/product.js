@@ -1,11 +1,17 @@
 import { Router } from "express";
 import { createRequire } from "node:module";
-const require = createRequire(import.meta.url);
-const products = require("../products.json");
+import { PrismaClient } from "@prisma/client";
+
+// ! json comun y corriente
+//const require = createRequire(import.meta.url);
+// const products = require("../products.json");
 
 export const productRouter = Router();
 
-productRouter.get("/", (req, res) => {
+const prisma = new PrismaClient();
+const products = await prisma.product.findMany();
+
+productRouter.get("/", async (req, res) => {
   res.json(products);
 });
 
