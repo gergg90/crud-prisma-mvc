@@ -5,7 +5,9 @@ const prisma = new PrismaClient();
 const main = async () => {
   const product = await prisma.product.findFirst({
     where: {
-      id: 2,
+      category: {
+        products: {},
+      },
     },
   });
 

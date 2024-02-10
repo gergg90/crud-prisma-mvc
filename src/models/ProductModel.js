@@ -20,5 +20,6 @@ export class ProductModel {
     const createProduct = await prisma.product.create({
       data: data,
     });
+    return createProduct;
   };
 }
