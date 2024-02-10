@@ -49,3 +49,12 @@ productRouter.patch("/:id", async (req, res) => {
     console.log(`Este es un error ${e}`);
   }
 });
+
+productRouter.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const product = await ProductModel.delete(id);
+  if (!product) return res.status(400).json({ message: "Product not found" });
+
+  res.status(204).json(product);
+});

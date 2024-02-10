@@ -34,11 +34,15 @@ export class ProductModel {
   };
 
   static delete = async (id) => {
-    const deleteProduct = await prisma.product.delete({
-      where: {
-        id: parseInt(id),
-      },
-    });
-    return deleteProduct;
+    try {
+      const deleteProduct = await prisma.product.delete({
+        where: {
+          id: parseInt(id),
+        },
+      });
+      return deleteProduct;
+    } catch (e) {
+      console.log(`Error en method productdelete: ${e}`);
+    }
   };
 }
