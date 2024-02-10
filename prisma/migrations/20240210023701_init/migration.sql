@@ -22,6 +22,3 @@ CREATE UNIQUE INDEX "Category_id_key" ON "Category"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Product_id_key" ON "Product"("id");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Product_categoryId_key" ON "Product"("categoryId");

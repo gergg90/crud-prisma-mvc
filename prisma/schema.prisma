@@ -22,7 +22,7 @@ model Product {
   price Float 
   description String?
   category Category @relation(fields: [categoryId], references: [id])
-  categoryId Int @unique
+  categoryId Int
   images String
   createdAt DateTime @default(now())
   updateAt DateTime @updatedAt
