@@ -22,4 +22,14 @@ export class ProductModel {
     });
     return createProduct;
   };
+
+  static update = async (id, data) => {
+    const updateProduct = await prisma.product.update({
+      where: {
+        id: parseInt(id),
+      },
+      data: data,
+    });
+    return updateProduct;
+  };
 }

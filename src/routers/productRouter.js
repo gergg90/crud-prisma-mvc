@@ -1,6 +1,9 @@
 import { Router } from "express";
 import { ProductModel } from "../models/productModel.js";
-import { validateProduct } from "../schema/productSchema.js";
+import {
+  validatePartialProduct,
+  validateProduct,
+} from "../schema/productSchema.js";
 
 export const productRouter = Router();
 
@@ -26,5 +29,23 @@ productRouter.post("/", async (req, res) => {
   if (!result.success)
     return res.status(400).json({ message: JSON.parse(result.error.message) });
 
-  res.status(201).json(result.data);
+  const newProduct = await ProductModel.create(result.data);
+
+  res.status(201).json(newProduct);
+});
+
+productRouter.patch("/:id", async (req, res) => {
+  const result = validatePartialProduct(req.body);
+  const { id } = req.params;
+
+  if (!result.success)
+    return res.status(400).json({ message: JSON.parse(result.error.message) });
+
+  try {
+    const updateProduct = await ProductModel.update(id, result.data);
+    console.log(updateProduct);
+    res.status(200).json(updateProduct);
+  } catch (e) {
+    console.log(`Este es un error ${e}`);
+  }
 });
