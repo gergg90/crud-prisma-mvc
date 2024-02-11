@@ -1,12 +1,13 @@
-import express from "express";
+import express, { json } from "express";
 import { productRouter } from "./routers/productRouter.js";
+import { corsMiddleware } from "./middleware/cors.js";
 
 const app = express();
+app.use(corsMiddleware());
 
-const PORT = process.env.PORT ?? 3000;
-
+const PORT = process.env.PORT ?? 4321;
 app.disable("x-powered-by");
-app.use(express.json());
+app.use(json());
 app.use("/products", productRouter);
 
 app.get("/", (req, res) => {
