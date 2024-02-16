@@ -8,3 +8,7 @@ categoryRouter.get("/", CategoryController.findAll);
 categoryRouter.get("/:id", CategoryController.findById);
 
 categoryRouter.post("/", CategoryController.create);
+
+categoryRouter.patch("/:id", CategoryController.update);
+
+categoryRouter.delete("/:id", CategoryController.delete);

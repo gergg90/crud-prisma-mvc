@@ -18,9 +18,29 @@ export class CategoryModel {
   };
 
   static create = async (data) => {
-    const createProduct = await prisma.category.create({
+    const createCategory = await prisma.category.create({
       data: data,
     });
-    return createProduct;
+    return createCategory;
+  };
+
+  static update = async (id, data) => {
+    const updateCategory = await prisma.category.update({
+      where: {
+        id: parseInt(id),
+      },
+      data: data,
+    });
+    return updateCategory;
+  };
+
+  static delete = async (id) => {
+    const deleteCategory = await prisma.category.delete({
+      where: {
+        id: parseInt(id),
+      },
+    });
+
+    return deleteCategory;
   };
 }
