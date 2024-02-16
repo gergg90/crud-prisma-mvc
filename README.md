@@ -1,5 +1,3 @@
-### A continuacion agregaremos el readme no desesperen.
-
 <img align="right" src="https://wallpapercave.com/wp/wp6606918.jpg" height="300" style="border-radius: 15px;">
 
 <h1 align="center">Crud-Products-Prisma.</h1>
